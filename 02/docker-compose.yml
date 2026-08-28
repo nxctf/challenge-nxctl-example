@@ -1,0 +1,14 @@
+services:
+  b-side:
+    build: ./src
+    container_name: b-side-pwn
+    restart: unless-stopped
+    ports:
+      - "1337:1337"
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL

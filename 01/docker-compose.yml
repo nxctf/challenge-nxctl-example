@@ -1,0 +1,8 @@
+services:
+  web01:
+    build: .
+    ports:
+      - "8081:80"
+    environment:
+      FLAG: "NFCTF{v13w_s0uRc3_th3n_l0g1n}"
+    restart: unless-stopped
