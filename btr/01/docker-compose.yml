@@ -1,0 +1,7 @@
+services:
+  btr01:
+    build: .
+    ports:
+      - "8001:80"
+      - "2222:22"
+    restart: unless-stopped

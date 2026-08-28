@@ -1,0 +1,11 @@
+key: "NFCTF-2026"
+
+ttl:
+  default_minutes: 15
+  extend_minutes: 10
+  extend_threshold_minutes: 5
+  extend_cooldown_seconds: 30
+
+lifecycle:
+  can_restart: true
+  restart_cooldown_seconds: 300

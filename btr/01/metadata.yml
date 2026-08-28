@@ -1,0 +1,29 @@
+id: btr01
+difficulty: baby
+name: byte_key_api
+source: https://github.com/vulhub/vulhub/tree/master/php/8.1-backdoor
+vulnerability:
+  name: PHP 8.1.0-dev Backdoor
+  cve: null
+services:
+  - port: 22
+    proto: tcp
+    name: openssh
+    role: pivot
+  - port: 80
+    proto: tcp
+    name: php-api
+    role: vulnerable
+flag:
+  type: file
+  path: /root/flag.txt
+solve:
+  - identify PHP 8.1.0-dev on the API service
+  - exploit the backdoored User-Agentt header to run commands as www-data
+  - read the leaked SSH private key from /home/ctf/id_rsa
+  - log in as ctf over SSH using the leaked key
+  - use find to enumerate SUID binaries
+  - check GTFOBins for env SUID usage
+  - use env to spawn a root shell and read /root/flag.txt
+restart_persistence: image-baked flag, SSH key, and SUID binary
+internet_required_after_deploy: false
